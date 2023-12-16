@@ -24,6 +24,7 @@ export default async function handler(req, res) { //Function to handle nextjs re
           "state": "NY", //beneficiary State
           "postcode": "10101", //beneficiary Postcode
           "aba": "573675777", //for US bank account
+          "iban": "DE75512108001245126199", //Customer Iban
           "account_number": req.body.account_number, 
           "identification_type": req.body.identification_type,
           "identification_value": req.body.identification_value,
@@ -39,6 +40,7 @@ export default async function handler(req, res) { //Function to handle nextjs re
       },
       "payout_amount": req.body.amount,
       "payout_currency": payout_currency,
+      "confirm_automatically": "true",
       "sender": {
           "first_name": "John", //Your first name
           "last_name": "Doe", // Yout last name
@@ -58,7 +60,8 @@ export default async function handler(req, res) { //Function to handle nextjs re
       },
       "sender_country": "US", //Your Country
       "sender_currency": "USD", //Your Currency
-      "sender_entity_type": "individual"
+      "sender_entity_type": "individual",
+      "statement_descriptor": "Salary payout" //Unstructured remittance information
   }
 
   // Set the Rapyd API URL
